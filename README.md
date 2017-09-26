@@ -188,6 +188,9 @@ const summerOption = {
     fontSizes: ['12', '14', '16','18','20','22', '24', '36'],
     toolbar: [["fontsize",["fontsize"]], ["font", ["bold", "italic", "underline", "clear"]],  ["color", ["color"]], ["para", ["ul", "ol", "paragraph"]], ["insert", [ "hr"]],["table", ["table"]], ["insert", [ "picture"]]]
 }
+
+$('#summernote').summernote(summerOption);
+$('#summernote').code('请添加内容...');
 ```
 
 ### License
