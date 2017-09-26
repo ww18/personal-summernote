@@ -7,8 +7,6 @@ Super Simple WYSIWYG Editor on Bootstrap(3.0 and 2.x).
 ### Summernote
 Summernote is a javascript program that helps you to create WYSIWYG Editor on web.
 
-Home Page: http://hackerwins.github.io/summernote/
-
 ### Why Summernote?
 
 Summernote has something specials no like others.
@@ -85,51 +83,52 @@ $('#summernote').destroy();
 * Clipboard
 * Media Object Selection
 
-### Change Log
+up load img
+```html
+$.sendFile = function(file, editor, $editable) {
 
-#### v0.5.2 2014-07-20
-* Air Mode
-* And bug patch (scroll, createLink, ...)
+    var filename = false;
+    try {
+        filename = file['name'];
+    } catch(e) {
+        filename = false;
+    }
 
-#### v0.5.1 2014-03-16
-* Support 15 Languages(https://github.com/HackerWins/summernote/tree/master/lang)
-* Add local-server for develop summernote.
-* Font style: Font-Family
-* And Bug patch.
+    //以上防止在图片在编辑器内拖拽引发第二次上传导致的提示错误
+    var ext = filename.substr(filename.lastIndexOf("."));
+    ext = ext.toUpperCase();
+    var timestamp = new Date().getTime();
 
-#### v0.5 2013-12-29
-* Support both Font-Awesome 3.x and 4.x
-* CodeMirror as Codeview
-* Insert Video (by cdownie)
-* Support 5 Languages(by hendrismit, tschiela, inomies, cverond)
-* Restructuring: jQuery build pattern
+    const tempCommon = commonParam.substr(1).split('&');
+    var data = new FormData();
+    data.append("report_img", file);
+    for(let i = 0; i < tempCommon.length; i++){
+        const temp = tempCommon[i].split('=');
+        data.append(temp[0], temp[1]);
+    }
+    $.ajax({
+        data: data,
+        type: "POST",
+        url: url,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(data) {
+            console.log('html: ', $editable)
+            editor.insertImage($editable, data.data['img_src']);
+        }
+    });
+}
 
-#### v0.4 2013-11-01
-* Support both Bootstrap 3.0 and 2.x
-* Fullscreen
-* Codeview
-* Image Upload callback
-
-#### v0.3 2013-09-01
-* Bugs(image upload, fontsize, tab, recent color, ...)
-* Help dialog(keyboard shortcut)
-* Init options(event callbacks, custom toolbar)
-* Resize bar
-* Support IE8 Beta(some range bugs, can't insert Image)
-
-#### v0.2, 2013-08-01
-* Undo/Redo
-* Image sizing handle and popover
-* Support standalone css
-* Support Multiple Editor
-* Remove jQuery.curstyles dependency
-
-#### v0.1, 2013-07-01
-* Font style: size, color, bold, italic, underline, remove font style
-* Para style: bullet, align, outdent, indent, line height
-* Image: drag & drop, dialog
-* Link: popover and dialog
-* Table: create table with dimension picker
+const summerOption = {
+    onImageUpload: function(files, editor, $editable) {
+        $.sendFile(files[0],editor,$editable);
+    },
+    width: 852.5,
+    fontSizes: ['12', '14', '16','18','20','22', '24', '36'],
+    toolbar: [["fontsize",["fontsize"]], ["font", ["bold", "italic", "underline", "clear"]],  ["color", ["color"]], ["para", ["ul", "ol", "paragraph"]], ["insert", [ "hr"]],["table", ["table"]], ["insert", [ "picture"]]]
+}
+```
 
 ### for Hacker
 
