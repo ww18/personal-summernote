@@ -83,52 +83,6 @@ $('#summernote').destroy();
 * Clipboard
 * Media Object Selection
 
-up load img
-```html
-$.sendFile = function(file, editor, $editable) {
-
-    var filename = false;
-    try {
-        filename = file['name'];
-    } catch(e) {
-        filename = false;
-    }
-
-    //以上防止在图片在编辑器内拖拽引发第二次上传导致的提示错误
-    var ext = filename.substr(filename.lastIndexOf("."));
-    ext = ext.toUpperCase();
-    var timestamp = new Date().getTime();
-
-    const tempCommon = commonParam.substr(1).split('&');
-    var data = new FormData();
-    data.append("report_img", file);
-    for(let i = 0; i < tempCommon.length; i++){
-        const temp = tempCommon[i].split('=');
-        data.append(temp[0], temp[1]);
-    }
-    $.ajax({
-        data: data,
-        type: "POST",
-        url: url,
-        cache: false,
-        contentType: false,
-        processData: false,
-        success: function(data) {
-            console.log('html: ', $editable)
-            editor.insertImage($editable, data.data['img_src']);
-        }
-    });
-}
-
-const summerOption = {
-    onImageUpload: function(files, editor, $editable) {
-        $.sendFile(files[0],editor,$editable);
-    },
-    width: 852.5,
-    fontSizes: ['12', '14', '16','18','20','22', '24', '36'],
-    toolbar: [["fontsize",["fontsize"]], ["font", ["bold", "italic", "underline", "clear"]],  ["color", ["color"]], ["para", ["ul", "ol", "paragraph"]], ["insert", [ "hr"]],["table", ["table"]], ["insert", [ "picture"]]]
-}
-```
 
 ### for Hacker
 
@@ -188,6 +142,53 @@ grunt server
 ### Contacts
 * Email: susukang98@gmail.com
 * Twitter: http://twitter.com/hackerwins
+
+example upload image
+```html
+$.sendFile = function(file, editor, $editable) {
+
+    var filename = false;
+    try {
+        filename = file['name'];
+    } catch(e) {
+        filename = false;
+    }
+
+    //以上防止在图片在编辑器内拖拽引发第二次上传导致的提示错误
+    var ext = filename.substr(filename.lastIndexOf("."));
+    ext = ext.toUpperCase();
+    var timestamp = new Date().getTime();
+
+    const tempCommon = commonParam.substr(1).split('&');
+    var data = new FormData();
+    data.append("report_img", file);
+    for(let i = 0; i < tempCommon.length; i++){
+        const temp = tempCommon[i].split('=');
+        data.append(temp[0], temp[1]);
+    }
+    $.ajax({
+        data: data,
+        type: "POST",
+        url: url,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(data) {
+            console.log('html: ', $editable)
+            editor.insertImage($editable, data.data['img_src']);
+        }
+    });
+}
+
+const summerOption = {
+    onImageUpload: function(files, editor, $editable) {
+        $.sendFile(files[0],editor,$editable);
+    },
+    width: 852.5,
+    fontSizes: ['12', '14', '16','18','20','22', '24', '36'],
+    toolbar: [["fontsize",["fontsize"]], ["font", ["bold", "italic", "underline", "clear"]],  ["color", ["color"]], ["para", ["ul", "ol", "paragraph"]], ["insert", [ "hr"]],["table", ["table"]], ["insert", [ "picture"]]]
+}
+```
 
 ### License
 summernote may be freely distributed under the MIT license.
