@@ -1,3 +1,6 @@
+
+基于summernote进行的自定义, 主要改变是: setting文件直接写的是中文,图片添加直接选择图片,并且写定了id值,所以一个页面只能有一个编辑器,并且可以连续上传同一个文件名的文件，并且去掉了图片的三个浮动选项
+
 # Summernote
 Super Simple WYSIWYG Editor on Bootstrap(3.0 and 2.x).
 
