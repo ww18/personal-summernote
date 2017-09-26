@@ -1,50 +1,7 @@
 
-基于summernote进行的自定义, 主要改变是: setting文件直接写的是中文,图片添加直接选择图片,并且写定了id值,所以一个页面只能有一个编辑器,并且可以连续上传同一个文件名的文件，并且去掉了图片的三个浮动选项
+基于summernote进行的自定义, 主要改变是: setting文件直接写的是中文,图片添加直接选择图片,并且写定了id值,所以一个页面只能有一个编辑器,并且可以连续上传同一个文件名的文件，并且去掉了图片的三个浮动选项.
+如果还想自定义的话, 需要按要求修改后,直接运行grunt --force, 然后将dist文件中需要的js和css拷贝到相应的地方即可.
 
-# Summernote
-Super Simple WYSIWYG Editor on Bootstrap(3.0 and 2.x).
-
-[![Build Status](https://secure.travis-ci.org/HackerWins/summernote.png)](http://travis-ci.org/HackerWins/summernote)
-[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
-
-### Summernote
-Summernote is a javascript program that helps you to create WYSIWYG Editor on web.
-
-### Why Summernote?
-
-Summernote has something specials no like others.
-* Simple UI
-* Interative WYSIWYG editing
-* Handy integration with server
-
-#### Inspired by
-* Gmail WYSIWYG Editor (http://www.gmail.com)
-* Redactor (http://imperavi.com/redactor/)
-
-### Easy to install
-
-Summernote uses opensouce libraries(jQuery, bootstrap, fontAwesome) 
-
-#### 01. include js/css
-
-Include Following code into `<head>` tag of your HTML:
-
-```html
-<!-- include libraries(jQuery, bootstrap, fontawesome) -->
-<script type="text/javascript" src="//code.jquery.com/jquery-1.9.1.min.js"></script> 
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
-<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
-
-<!-- include summernote css/js-->
-<link href="//oss.maxcdn.com/summernote/0.5.1/summernote.css" rel="stylesheet">
-<script src="//oss.maxcdn.com/summernote/0.5.1/summernote.min.js"></script>
-```
-
-If your summernote download is placed in a different folder, don't forget to change file's paths.
-
-#### 02. target elements
-And place `div` tag to somewhere in the `body` tag. This element will be placed by the visual representation of the summernote.
 ```html
 <div id="summernote">Hello Summernote</div>
 ```
@@ -69,23 +26,6 @@ var sHTML = $('#summernote').code();
 ```javascript
 $('#summernote').destroy();
 ```
-
-#### Dependencies
-* jQuery: http://jquery.com/
-* Bootstrap: http://getbootstrap.com (both 2.x and 3.x)
-* fontAwesome: https://github.com/FortAwesome/Font-Awesome (both 3.x and 4.x)
-
-### Supported platform
-* Modern Browser (Safari, Chrome, Firefox, Opera, Internet Explorer 9+)
-* OS (Windows, Mac, Linux)
-
-### Upcoming Features
-* Responsive Toolbar
-* Table: Handles(Sizing, Selection) and Popover
-* support IE8
-* Clipboard
-* Media Object Selection
-
 
 ### for Hacker
 
